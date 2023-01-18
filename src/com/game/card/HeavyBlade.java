@@ -2,6 +2,8 @@ package com.game.card;
 
 public class HeavyBlade extends AttackCard {
 	
+	public HeavyBlade() {}
+	
 	public HeavyBlade(int idx, String name, int cost, int damage, String rarity, String owner) {
 		super(idx, name, cost, damage, rarity, owner);
 	}

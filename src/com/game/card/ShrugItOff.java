@@ -2,6 +2,8 @@ package com.game.card;
 
 public class ShrugItOff extends SkillCard {
 	
+	public ShrugItOff() {}
+	
 	public ShrugItOff(int idx, String name, int cost, int guard, String rarity, String owner) {
 		super(idx, name, cost, guard, rarity, owner);
 	}
@@ -10,7 +12,7 @@ public class ShrugItOff extends SkillCard {
 		int idx = 6;
 		String name = "흘려보내기";
 		int cost = 1;
-		int guard = 8;
+		int guard = 9;
 		String rarity = "normal";
 		String owner = "A";
 		
