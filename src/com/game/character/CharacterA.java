@@ -1,6 +1,7 @@
 package com.game.character;
 
 import com.game.card.*;
+import com.game.data.Status;
 
 public class CharacterA extends Character {
 
