@@ -3,6 +3,7 @@ package com.game.data;
 public class Status {
 
 	private int hp;					//체력
+	private int maxHp;				//최대체력
 	private int block;				//방어도
 	private boolean isVulnerable;	//취약 상태 유무
 	private int cntVulnerable;		//취약 카운터
@@ -15,6 +16,7 @@ public class Status {
 	
 	public Status(int maxHp) {
 		this.hp = maxHp;
+		this.maxHp = maxHp;
 		this.block = 0;
 		this.isVulnerable = false;
 		this.cntVulnerable = 0;
@@ -30,6 +32,14 @@ public class Status {
 
 	public void setHp(int hp) {
 		this.hp = hp;
+	}
+
+	public int getMaxHp() {
+		return maxHp;
+	}
+
+	public void setMaxHp(int maxHp) {
+		this.maxHp = maxHp;
 	}
 
 	public int getBlock() {

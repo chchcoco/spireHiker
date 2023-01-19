@@ -1,5 +1,7 @@
 package com.game.card;
 
+import com.game.data.Status;
+
 public class SkillCard implements Card {
 	
 	private int idx;
@@ -43,6 +45,9 @@ public class SkillCard implements Card {
 		return guard;
 	}
 
+	public String getRarity(){
+		return rarity;
+	}
 
 	public String getDef() {
 		return def;
@@ -76,5 +81,7 @@ public class SkillCard implements Card {
 		this.owner = owner;
 	}
 	
-	
+	public int giveBlock(Status i) {
+		return this.guard;
+	}
 }

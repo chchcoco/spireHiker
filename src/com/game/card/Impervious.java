@@ -1,5 +1,7 @@
 package com.game.card;
 
+import com.game.data.Status;
+
 public class Impervious extends SkillCard {
 	
 	public Impervious() {}
@@ -20,6 +22,11 @@ public class Impervious extends SkillCard {
 		impervious.setDef("방어도를 " + impervious.getGuard() + "얻습니다.");
 		
 		return impervious;
+	}
+
+	@Override
+	public int giveBlock(Status me){
+		return this.getGuard() + me.getDexterity();
 	}
 
 }

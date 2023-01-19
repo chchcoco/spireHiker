@@ -1,4 +1,6 @@
 package com.game.card;
+ 
+import com.game.data.Status;
 
 public class AttackCard implements Card {
 	
@@ -43,6 +45,9 @@ public class AttackCard implements Card {
 		return damage;
 	}
 
+	public String getRarity() {
+		return rarity;
+	}
 
 	public String getDef() {
 		return def;
@@ -76,13 +81,9 @@ public class AttackCard implements Card {
 		this.owner = owner;
 	}
 
-	public String getRarity() {
-		return rarity;
+	public int giveDamage(Status i) {
+		return this.damage;
 	}
 
-	public void setRarity(String rarity) {
-		this.rarity = rarity;
-	}
-	
 	
 }

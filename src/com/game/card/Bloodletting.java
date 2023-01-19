@@ -22,4 +22,6 @@ public class Bloodletting extends SkillCard {
 		return bloodletting;
 	}
 
+	
+
 }

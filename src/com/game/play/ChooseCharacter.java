@@ -3,6 +3,7 @@ package com.game.play;
 import java.util.Scanner;
 
 import com.game.GameInformation;
+import com.game.card.CardListOfA;
 import com.game.character.Character;
 import com.game.character.CharacterList;
 
@@ -20,11 +21,19 @@ public class ChooseCharacter implements GameInformation {
 			System.out.print("캐릭터를 선택해주세요 : ");
 			int input = sc.nextInt();
 			if (input > 0 && input <= GameInformation.CHARACTER_COUNT) {
-				return character[input - 1];
+				Character player = character[input - 1];
+				player.setCardList(new CardListOfA().characterChoose(player));
+				player.startingDeck();
+				
+				HikingSpire gameStart = new HikingSpire();
+
+				gameStart.hiking(player);
 			} else {
 				System.out.println("없는 번호입니다. 골라주세요.");
 			}
 		}
 	}
+
+	
 
 }
