@@ -11,10 +11,14 @@ public class CharacterA extends Character {
 	}
 	
 	@Override
-	public Status characterEffect(Status status) {
+	public void characterEffect() {
+		characterEffect(this.getStatus());
+	}
+	
+	public void characterEffect(Status status) {
 		status.heal(6);
-		return status;
-	};
+		
+	}
 	
 	@Override
 	public void startingDeck() {

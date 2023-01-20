@@ -26,7 +26,7 @@ public class AttackCard implements Card {
 
 	@Override
 	public String printText() {
-		return def;
+		return name + " : " + def;
 	}
 
 	public int getIdx() {

@@ -1,6 +1,8 @@
 package com.game.play;
 
 import com.game.character.Character;
+import com.game.stage.GameStage;
+import com.game.stage.StartEvent;
 
 public class HikingSpire {
 
@@ -10,19 +12,20 @@ public class HikingSpire {
     public void hiking(Character player) {
         while(true){
             
-            
-
+            randomStage(floor, player);
 
             floor++;
         }
 
     }
 
-    public void randomStage(int floor) {
-        if(floor == 1){
-            //시작 이벤트
-        } else if(floor == 2){
-            //일반 전투
+    public void randomStage(int floor, Character player) {
+        if(floor == 1){							//시작 이벤트
+        	GameStage stage = new StartEvent();
+        	stage.entry(player);
+        } else if(floor == 2){					//일반 전투
+            
+        	
         } else if(floor == 10){
             //휴식
         } else if(floor == 11){

@@ -9,7 +9,11 @@ public class Action {
 		return defend;
 	}
 	
-	public void useCard() {}
+	public Status getDamage(int damage, Status defend) {
+		defend.setHp(defend.getHp() - damage);
+		
+		return defend;
+	}
 	
 	public void heal() {}
 	

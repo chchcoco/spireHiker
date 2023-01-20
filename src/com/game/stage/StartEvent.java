@@ -2,8 +2,10 @@ package com.game.stage;
 
 import java.util.Scanner;
 
+import com.game.card.Card;
 import com.game.card.CardReward;
 import com.game.character.Character;
+import com.game.data.Action;
 
 public class StartEvent implements GameStage{
     
@@ -29,7 +31,10 @@ public class StartEvent implements GameStage{
             System.out.print("시작 보상을 선택하시오 : ");
             int input = sc.nextInt();
             if(input == 0 && random != 0){
-                new CardReward().getReword(player.getCardList());
+                Card reward = new CardReward().getReward(player);
+                if(reward != null) {
+                	player.addCard(reward);
+                }
                 break;
             } else if(input == 1 && random != 1){
                 int result = player.getStatus().getMaxHp();
@@ -38,12 +43,15 @@ public class StartEvent implements GameStage{
                 break;
             } else if(input == 2 && random != 2){
                 //데미지 20%
+            	new Action().getDamage((int)(player.getStatus().getMaxHp() * 0.2), player.getStatus());
                 //히히카드보상
+            	Card reward = new CardReward().EpicCardReward(player);
+            	if(reward != null) {
+            		player.addCard(reward);
+            	}
             } else {
                 System.out.println("다시 골라주세요");
-            }
-            
-            
+            } 
         
         }
     }
