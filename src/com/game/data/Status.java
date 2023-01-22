@@ -115,5 +115,6 @@ public class Status {
 		
 		this.block = 0;
 	}
+
 	
 }

@@ -9,7 +9,7 @@ public class CardListOfA {
 			return getCardListA();
 		} else {
 			System.out.println("심각한오류가 발생했습니다. 게임을 다시 작동해주세요.");
-			return new Card[][]{{new Strike(), new Defence()},{},{}};
+			return null;
 		}
 	}
 

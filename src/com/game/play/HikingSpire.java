@@ -1,6 +1,7 @@
 package com.game.play;
 
 import com.game.character.Character;
+import com.game.stage.Battle;
 import com.game.stage.GameStage;
 import com.game.stage.StartEvent;
 
@@ -24,8 +25,8 @@ public class HikingSpire {
         	GameStage stage = new StartEvent();
         	stage.entry(player);
         } else if(floor == 2){					//일반 전투
-            
-        	
+            //적 생성 Enemy enemy = 적();
+        	Battle battle = new Battle(player, enemy);
         } else if(floor == 10){
             //휴식
         } else if(floor == 11){

@@ -16,7 +16,7 @@ public class CharacterA extends Character {
 	}
 	
 	public void characterEffect(Status status) {
-		status.heal(6);
+		//action.heal(6);
 		
 	}
 	

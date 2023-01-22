@@ -1,5 +1,8 @@
 package com.game.card;
 
+import com.game.character.Character;
+import com.game.enemy.Enemy;
+
 public class Bash extends AttackCard {
 	
 	public Bash() {}
@@ -20,5 +23,17 @@ public class Bash extends AttackCard {
 		bash.setDef("피해를 " + bash.getDamage() + "줍니다.\n취약을 2 부여합니다.");
 		
 		return bash;
+	}
+	
+	@Override
+	public void useCard(Character player, Enemy enemy, int nowEnergy) {
+		if(nowEnergy >= this.getCost()) {
+			int damage =(int) ((this.getDamage() + player.getStatus().getStrength())
+					* (player.getStatus().isWeak()? 0.75 : 1));
+			//enemy에게 데미지				
+			
+		} else {
+			System.out.println("에너지가 없어 사용할 수 없습니다.");
+		}
 	}
 }

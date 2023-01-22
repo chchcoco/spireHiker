@@ -12,7 +12,7 @@ public class Character {
 	private Card[][] cardList = new Card[3][];
 	private int deckCnt = 0;
 	private Status status;
-	
+	private int maxEnergy = 3;
 	
 	public Character(String name, int maxHp, String def) {
 		super();
@@ -53,6 +53,10 @@ public class Character {
 	public Status getStatus(){
 		return status;
 	}
+	
+	public int getMaxEnergy() {
+		return maxEnergy;
+	}
 
 	public void setName(String name) {
 		this.name = name;
@@ -76,6 +80,10 @@ public class Character {
 
 	public void setStatus(Status status){
 		this.status = status;
+	}
+	
+	public void setMaxEnergy(int maxEnergy) {
+		this.maxEnergy = maxEnergy;
 	}
 	
 	public void addCard(Card card) {

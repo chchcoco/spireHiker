@@ -1,5 +1,8 @@
 package com.game.data;
 
+import com.game.card.Card;
+import com.game.character.Character;
+
 public class Action {
 	
 	public void calcDamage() {}
@@ -17,12 +20,17 @@ public class Action {
 	
 	public void heal() {}
 	
-	public boolean isDead(Status obj) {
-		boolean isDead;
-		
+
+	
+	public boolean isDead(Status status) {
+		boolean isDead = false;
+		if(status.getHp() <= 0) {
+			isDead = true;
+		}
 		return isDead;
 	}
 	
-	
 
+	
+	
 }

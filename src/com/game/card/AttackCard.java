@@ -1,6 +1,8 @@
 package com.game.card;
  
+import com.game.character.Character;
 import com.game.data.Status;
+import com.game.enemy.Enemy;
 
 public class AttackCard implements Card {
 	
@@ -26,7 +28,12 @@ public class AttackCard implements Card {
 
 	@Override
 	public String printText() {
-		return name + " : " + def;
+		return "Cost : " + cost + name + " : " + def;
+	}
+	
+	@Override
+	public void useCard(Character player, Enemy enemy, int nowEnergy) {
+		
 	}
 
 	public int getIdx() {
