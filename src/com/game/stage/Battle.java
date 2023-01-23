@@ -8,6 +8,7 @@ import com.game.card.CardReward;
 import com.game.character.Character;
 import com.game.data.Action;
 import com.game.enemy.Enemy;
+import com.game.enemy.TheGuardian;
 import com.game.play.Ending;
 
 public class Battle implements GameInformation {
@@ -76,6 +77,9 @@ public class Battle implements GameInformation {
 							battleEnd = true;
 							break;
 						}
+						if("boss".equals(enemy.getType())) {
+							((TheGuardian)enemy).modeChange();
+						}
 					} else {
 						System.out.println("이미 사용한 카드 입니다.");
 					}
@@ -85,8 +89,12 @@ public class Battle implements GameInformation {
 			}
 			if(battleEnd) {
 				battleEnd(enemy);
+				if("A".equals(player.getName())) {
+					player.characterEffect();
+				}
 				break;
 			}
+			enemy.getStatus().turnEnd();
 			enemy.actionPattern(player ,turnCnt);						// if 턴 엔드 : 적 행동 수행;
 			if(!player.getStatus().isLive()) {
 				new Ending().badEnd(player);

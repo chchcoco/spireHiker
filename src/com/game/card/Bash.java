@@ -23,7 +23,7 @@ public class Bash extends AttackCard {
 		String owner = "A";
 		
 		AttackCard bash = new Bash(idx, name, cost, damage, rarity, owner);
-		bash.setDef("피해를 " + bash.getDamage() + "줍니다.\n취약을" + this.vulnerable + "부여합니다.");
+		bash.setDef("피해를 " + bash.getDamage() + "줍니다. 취약을" + this.vulnerable + "부여합니다.");
 		
 		return bash;
 	}

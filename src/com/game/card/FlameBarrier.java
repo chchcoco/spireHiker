@@ -23,7 +23,7 @@ public class FlameBarrier extends SkillCard {
 		String owner = "A";
 		
 		SkillCard flameBarrier = new FlameBarrier(idx, name, cost, guard, rarity, owner);
-		flameBarrier.setDef("방어도를 " + flameBarrier.getGuard() + "얻습니다.\n적에게 약화" + this.weak + "를 부여합니다.");
+		flameBarrier.setDef("방어도를 " + flameBarrier.getGuard() + "얻습니다. 적에게 약화" + this.weak + "를 부여합니다.");
 		
 		return flameBarrier;
 	}

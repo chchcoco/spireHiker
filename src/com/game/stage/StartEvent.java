@@ -49,6 +49,7 @@ public class StartEvent implements GameStage{
             	if(reward != null) {
             		player.addCard(reward);
             	}
+            	break;
             } else {
                 System.out.println("다시 골라주세요");
             } 

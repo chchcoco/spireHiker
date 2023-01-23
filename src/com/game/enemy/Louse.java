@@ -20,12 +20,15 @@ public class Louse extends Enemy{
 		} else if(turnCnt % pattern == 0) {
 			if(this.randomCnt == 0) {
 				player.getStatus().addWeak(2);
+				System.out.println(this.getName() + "가 약화를 부여!");
 			} else {
 				this.getStatus().addStrength(3);
+				System.out.println(this.getName() + "의 힘이 증가!");
 			}
 		} else {
 			int damage = (int)(((int)(Math.random() * 3 + 5) + this.getStatus().getStrength()) 
 					* (this.getStatus().isWeak() ? 0.75 : 1));
+			System.out.println(this.getName() + "의 " + damage + "피해의 공격!");
 			player.getStatus().getDamage(damage);
 		}
 	}

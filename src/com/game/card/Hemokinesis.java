@@ -24,7 +24,7 @@ public class Hemokinesis extends AttackCard {
 		String owner = "A";
 		
 		AttackCard hemokinesis = new Hemokinesis(idx, name, cost, damage, rarity, owner);
-		hemokinesis.setDef("피해를 " + hemokinesis.getDamage() + "줍니다.\n체력을 " + this.costHp + " 잃습니다.");
+		hemokinesis.setDef("피해를 " + hemokinesis.getDamage() + "줍니다. 체력을 " + this.costHp + " 잃습니다.");
 		
 		return hemokinesis;
 	}

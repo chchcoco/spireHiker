@@ -17,17 +17,21 @@ public class JawWorm extends Enemy{
 		if(turnCnt == 1) {
 			int damage = (int)((this.getDamage() + this.getStatus().getStrength()) 
 					* (this.getStatus().isWeak() ? 0.75 : 1));
+			System.out.println(this.getName() + "의 " + damage + "피해의 공격!");
 			player.getStatus().getDamage(damage);
 		} else if (turnCnt % pattern == 0){
 			int damage = (int)((this.getDamage() + this.getStatus().getStrength()) 
 					* (this.getStatus().isWeak() ? 0.75 : 1));
+			System.out.println(this.getName() + "의 " + damage + "피해의 공격!");
 			player.getStatus().getDamage(damage);
 		} else if (turnCnt % pattern == 1) {
 			this.getStatus().addBlock(5);
 			this.getStatus().addStrength(3);
+			System.out.println(this.getName() + "의 힘이 증가했다!");
 		} else {
 			int damage = (int)((this.getDamage() + this.getStatus().getStrength()) 
 					* (this.getStatus().isWeak() ? 0.75 : 1));
+			System.out.println(this.getName() + "의 " + damage + "피해의 공격!");
 			player.getStatus().getDamage(damage);
 			this.getStatus().addBlock(6);
 		}

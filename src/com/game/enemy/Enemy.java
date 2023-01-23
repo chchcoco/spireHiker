@@ -74,7 +74,9 @@ public class Enemy {
 
 	public void actionPattern(Character player, int turnCnt) {}
 
-	public void printPattern(int turnCnt) {}
+	public void printPattern(int turnCnt) {
+		System.out.println(this.actionDef);
+	}
 
 	
 }

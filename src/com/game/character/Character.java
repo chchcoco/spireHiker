@@ -96,10 +96,7 @@ public class Character {
 		deck[deckCnt] = card;
 	}
 
-	public void characterEfferct() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void characterEfferct() {}
 	
 	
 	

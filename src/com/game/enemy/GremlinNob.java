@@ -4,7 +4,7 @@ import com.game.character.Character;
 
 public class GremlinNob extends Enemy{
 	
-private int pattern = (int)(Math.random() * 4 + 1);
+	private int pattern = (int)(Math.random() * 4 + 1);
 	
 	public GremlinNob() {
 		super("귀족 그렘린", (int)(Math.random() * 4) + 82, "elite");
@@ -20,12 +20,14 @@ private int pattern = (int)(Math.random() * 4 + 1);
 			this.getStatus().addStrength(2);
 			int damage = (int)((this.getDamage() + this.getStatus().getStrength()) 
 					* (this.getStatus().isWeak() ? 0.75 : 1));
+			System.out.println(this.getName() + "의 " + damage + "피해의 공격!");
 			player.getStatus().getDamage(damage);
 			player.getStatus().addVulnerable(3);
 		} else {
 			this.getStatus().addStrength(2);
 			int damage = (int)((this.getDamage() + this.getStatus().getStrength()) 
 					* (this.getStatus().isWeak() ? 0.75 : 1));
+			System.out.println(this.getName() + "의 " + damage + "피해의 공격!");
 			player.getStatus().getDamage(damage);
 		}
 	}

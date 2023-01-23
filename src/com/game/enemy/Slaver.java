@@ -17,12 +17,15 @@ public class Slaver extends Enemy {
 		if (turnCnt % pattern == 0){
 			int damage = (int)((this.getDamage() + this.getStatus().getStrength()) 
 					* (this.getStatus().isWeak() ? 0.75 : 1));
+			System.out.println(this.getName() + "의 " + damage + "피해의 공격!");
 			player.getStatus().getDamage(damage);
 		} else {
 			int damage = (int)((this.getDamage() + this.getStatus().getStrength()) 
 					* (this.getStatus().isWeak() ? 0.75 : 1));
+			System.out.println(this.getName() + "의 " + damage + "피해의 공격!");
 			player.getStatus().getDamage(damage);
 			player.getStatus().addWeak(1);
+			System.out.println(this.getName() + "가 약화를 부여!");
 		}
 	}
 	

@@ -17,6 +17,7 @@ public class Cultist extends Enemy {
 		} else {
 			int damage = (int)((this.getDamage() + this.getStatus().getStrength()) 
 					* (this.getStatus().isWeak() ? 0.75 : 1));
+			System.out.println(this.getName() + "의 " + damage + "피해의 공격!");
 			player.getStatus().getDamage(damage);
 		}
 	}

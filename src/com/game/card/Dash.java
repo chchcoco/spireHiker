@@ -33,7 +33,7 @@ public class Dash extends AttackCard {
 		String owner = "A";
 		
 		AttackCard dash = new Dash(idx, name, cost, damage, rarity, owner);
-		dash.setDef("피해를 " + dash.getDamage() + "줍니다.\n방어도를 " +
+		dash.setDef("피해를 " + dash.getDamage() + "줍니다. 방어도를 " +
 					getGuard() + "얻습니다.");
 		
 		return dash;

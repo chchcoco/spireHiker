@@ -21,7 +21,7 @@ public class HeavyBlade extends AttackCard {
 		String owner = "A";
 		
 		AttackCard heavyBlade = new HeavyBlade(idx, name, cost, damage, rarity, owner);
-		heavyBlade.setDef("피해를 " + heavyBlade.getDamage() + " 줍니다.\n힘의 효과가 4배로 적용됩니다.");
+		heavyBlade.setDef("피해를 " + heavyBlade.getDamage() + " 줍니다. 힘의 효과가 4배로 적용됩니다.");
 		
 		return heavyBlade;
 	}

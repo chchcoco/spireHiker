@@ -14,9 +14,11 @@ public class Slime extends Enemy{
 	public void actionPattern(Character player, int turnCnt) {
 		if(turnCnt % pattern == 0) {
 			player.getStatus().addWeak(2);
+			System.out.println(this.getName() + "가 약화를 부여!");
 		} else {
 			int damage = (int)((this.getDamage() + this.getStatus().getStrength()) 
 					* (this.getStatus().isWeak() ? 0.75 : 1));
+			System.out.println(this.getName() + "의 " + damage + "피해의 공격!");
 			player.getStatus().getDamage(damage);
 		}
 	}

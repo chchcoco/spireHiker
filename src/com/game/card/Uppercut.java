@@ -23,7 +23,7 @@ public class Uppercut extends AttackCard {
 		String owner = "A";
 		
 		AttackCard uppercut = new Uppercut(idx, name, cost, damage, rarity, owner);
-		uppercut.setDef("피해를 " + uppercut.getDamage() + "줍니다.\n약화와 취약을 1 부여합니다.");
+		uppercut.setDef("피해를 " + uppercut.getDamage() + "줍니다. 약화와 취약을 1 부여합니다.");
 		
 		return uppercut;
 	}

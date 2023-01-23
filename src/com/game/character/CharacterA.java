@@ -12,20 +12,15 @@ public class CharacterA extends Character {
 	
 	@Override
 	public void characterEffect() {
-		characterEffect(this.getStatus());
-	}
-	
-	public void characterEffect(Status status) {
-		//action.heal(6);
-		
+		this.getStatus().heal(6);
 	}
 	
 	@Override
 	public void startingDeck() {
-		for(int i = 1; i <= 4; i++) {
+		for(int i = 1; i <= 3; i++) {
 			this.addCard(new Strike().getCard());
 		}
-		for(int i = 1; i <= 4; i++) {
+		for(int i = 1; i <= 3; i++) {
 			this.addCard(new Defence().getCard());
 		}
 		this.addCard(new Bash().getCard());

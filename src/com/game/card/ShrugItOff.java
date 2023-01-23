@@ -21,7 +21,7 @@ public class ShrugItOff extends SkillCard {
 		String owner = "A";
 		
 		SkillCard shrugItOff = new ShrugItOff(idx, name, cost, guard, rarity, owner);
-		shrugItOff.setDef("방어도를 " + shrugItOff.getGuard() + "얻습니다.\n 50%의 확률로 민첩을 1 획득합니다.");
+		shrugItOff.setDef("방어도를 " + shrugItOff.getGuard() + "얻습니다.  50%의 확률로 민첩을 1 획득합니다.");
 		
 		return shrugItOff;
 	}
