@@ -7,6 +7,6 @@ public interface Card {
 
 	public String printText();
 	
-	public void useCard(Character player, Enemy enemy, int nowEnergy);
+	public boolean useCard(Character player, Enemy enemy);
 	
 }

@@ -1,6 +1,8 @@
 package com.game.card;
 
-import com.game.data.Status;
+import com.game.character.Character;
+import com.game.enemy.Enemy;
+import com.game.stage.Battle;
 
 public class Impervious extends SkillCard {
 	
@@ -19,14 +21,23 @@ public class Impervious extends SkillCard {
 		String owner = "A";
 		
 		SkillCard impervious = new Impervious(idx, name, cost, guard, rarity, rarity);
-		impervious.setDef("방어도를 " + impervious.getGuard() + "얻습니다.");
+		impervious.setDef("방어도를 " + this.getGuard() + "얻습니다.");
 		
 		return impervious;
 	}
 
 	@Override
-	public int giveBlock(Status me){
-		return this.getGuard() + me.getDexterity();
+	public boolean useCard(Character player, Enemy enemy) {
+		if(Battle.nowEnergy >= this.getCost()) {
+			Battle.nowEnergy -= this.getCost();
+			player.getStatus().addBlock(this.getGuard());
+			
+			return true;
+		} else {
+			System.out.println("에너지가 없어 사용할 수 없습니다.");
+			
+			return false;
+		}
 	}
 
 }

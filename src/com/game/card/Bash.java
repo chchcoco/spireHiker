@@ -2,8 +2,11 @@ package com.game.card;
 
 import com.game.character.Character;
 import com.game.enemy.Enemy;
+import com.game.stage.Battle;
 
 public class Bash extends AttackCard {
+	
+	int vulnerable = 2;
 	
 	public Bash() {}
 	
@@ -20,20 +23,25 @@ public class Bash extends AttackCard {
 		String owner = "A";
 		
 		AttackCard bash = new Bash(idx, name, cost, damage, rarity, owner);
-		bash.setDef("피해를 " + bash.getDamage() + "줍니다.\n취약을 2 부여합니다.");
+		bash.setDef("피해를 " + bash.getDamage() + "줍니다.\n취약을" + this.vulnerable + "부여합니다.");
 		
 		return bash;
 	}
 	
 	@Override
-	public void useCard(Character player, Enemy enemy, int nowEnergy) {
-		if(nowEnergy >= this.getCost()) {
+	public boolean useCard(Character player, Enemy enemy) {
+		if(Battle.nowEnergy >= this.getCost()) {
+			Battle.nowEnergy -= this.getCost();
 			int damage =(int) ((this.getDamage() + player.getStatus().getStrength())
 					* (player.getStatus().isWeak()? 0.75 : 1));
-			//enemy에게 데미지				
+			enemy.getStatus().getDamage(damage);			
+			enemy.getStatus().addVulnerable(this.vulnerable);
 			
+			return true;
 		} else {
 			System.out.println("에너지가 없어 사용할 수 없습니다.");
+			
+			return false;
 		}
 	}
 }

@@ -3,6 +3,7 @@ package com.game.card;
 import com.game.character.Character;
 import com.game.data.Status;
 import com.game.enemy.Enemy;
+import com.game.stage.Battle;
 
 public class AttackCard implements Card {
 	
@@ -28,12 +29,16 @@ public class AttackCard implements Card {
 
 	@Override
 	public String printText() {
-		return "Cost : " + cost + name + " : " + def;
+		return "Cost : " + cost + ", " + name + " : " + def;
 	}
 	
 	@Override
-	public void useCard(Character player, Enemy enemy, int nowEnergy) {
-		
+	public boolean useCard(Character player, Enemy enemy) {
+		if(Battle.nowEnergy >= this.getCost()) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public int getIdx() {

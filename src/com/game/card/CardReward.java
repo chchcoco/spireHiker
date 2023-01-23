@@ -13,7 +13,6 @@ public class CardReward {
 	 * 
 	 * */
 	public Card randomCard(Character player) {
-		int result;
 		Card reward;
 		Card[][] pool = player.getCardList();
 		int random = (int) (Math.random() * 100);
@@ -25,7 +24,7 @@ public class CardReward {
 			reward = pool[1][random];
 		} else {
 			random = (int) (Math.random() * pool[0].length);
-			reward = pool[1][random];
+			reward = pool[0][random];
 		}
 
 		return reward;
@@ -40,7 +39,7 @@ public class CardReward {
 
 		while (true) {
 			for (int i = 0; i < rewards.length; i++) {
-				System.out.println(rewards[i].printText());
+				System.out.println(i + ". " + rewards[i].printText());
 			}
 			System.out.println("9) 보상을 포기합니다.");
 			System.out.print("카드보상을 선택하여 주세요 : ");

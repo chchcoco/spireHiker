@@ -12,6 +12,8 @@ public class ChooseCharacter implements GameInformation {
 	Character[] character;
 
 	public Character choose() {
+		System.out.println("==============Hiking Spire==================");
+		
 		while (true) {
 			character = new CharacterList().getCharacterList();
 			for (int i = 0; i < character.length; i++) {

@@ -11,6 +11,7 @@ public class Status {
 	private int cntWeak;			//약화 카운터
 	private int strength;			//힘
 	private int dexterity;			//민첩
+	private boolean isLive;	//생존 여부
 	
 	public Status() {}
 	
@@ -24,6 +25,7 @@ public class Status {
 		this.cntWeak = 0;
 		this.strength = 0;
 		this.dexterity = 0;
+		this.isLive = true;
 	}
 
 	public int getHp() {
@@ -49,6 +51,10 @@ public class Status {
 	public void setBlock(int block) {
 		this.block = block;
 	}
+	
+	public void addBlock(int block) {
+		this.block = this.block + block;
+	}
 
 	public boolean isVulnerable() {
 		return isVulnerable;
@@ -65,7 +71,14 @@ public class Status {
 	public void setCntVulnerable(int cntVulnerable) {
 		this.cntVulnerable = cntVulnerable;
 	}
-
+	
+	public void addVulnerable(int vulnerable) {
+		this.cntVulnerable = this.cntVulnerable + vulnerable;
+		if(this.cntVulnerable > 0) {
+		isVulnerable = true;
+		}
+	}
+	
 	public boolean isWeak() {
 		return isWeak;
 	}
@@ -81,6 +94,13 @@ public class Status {
 	public void setCntWeak(int cntWeak) {
 		this.cntWeak = cntWeak;
 	}
+	
+	public void addWeak(int weak) {
+		this.cntWeak = this.cntWeak + weak;
+		if(this.getCntWeak() > 0) {
+			this.isWeak = true;
+		}
+	}
 
 	public int getStrength() {
 		return strength;
@@ -89,13 +109,29 @@ public class Status {
 	public void setStrength(int strength) {
 		this.strength = strength;
 	}
+	
+	public void addStrength(int strength) {
+		this.strength = this.strength + strength;
+	}
 
 	public int getDexterity() {
 		return dexterity;
 	}
+	
+	public boolean isLive() {
+		return isLive;
+	}
+	
+	public void setLive(boolean isLive) {
+		this.isLive = isLive;
+	}
 
 	public void setDexterity(int dexterity) {
 		this.dexterity = dexterity;
+	}
+	
+	public void addDexterity(int dexterity) {
+		this.dexterity = this.dexterity + dexterity;
 	}
 	
 	public void turnEnd() {
@@ -114,6 +150,49 @@ public class Status {
 		}
 		
 		this.block = 0;
+	}
+	
+	public void getDamage(int damage) {
+		damage = (int)(damage * (this.isVulnerable ? 1.5 : 1));
+		damage = this.block - damage;
+		if(damage >= 0) {
+			this.block = damage;
+			damage  = 0;
+			System.out.println("방어함.");
+		} else {
+			this.block = 0;
+			System.out.println(damage * -1 + "의 피해!");
+		}
+		this.hp = this.hp + damage;
+		if(this.hp <= 0) {
+			this.isLive = false;
+		}
+	}
+	
+	public void printInformation() {
+		System.out.println("현재 체력 : " + this.hp);
+		if(this.block != 0) {
+			System.out.println("현재 방어도 : " + this.block);
+		}
+		if(this.strength != 0) {
+			System.out.println("힘 : " + this.strength);
+		}
+		if(this.dexterity != 0) {
+			System.out.println("민첩 : " + this.dexterity);
+		}
+		if(this.isVulnerable) {
+			System.out.println("취약 : " + this.cntVulnerable);
+		}
+		if(this.isWeak) {
+			System.out.println("약화 : " + this.cntWeak);
+		}
+	}
+	
+	public void heal(int heal) {
+		this.hp += heal;
+		if(this.hp > this.maxHp) {
+			hp = maxHp;
+		}
 	}
 
 	

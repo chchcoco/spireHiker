@@ -1,8 +1,12 @@
 package com.game.card;
 
+import com.game.character.Character;
+import com.game.enemy.Enemy;
+import com.game.stage.Battle;
+
 public class FlameBarrier extends SkillCard {
 	
-	public int damage = 4;
+	public int weak = 2;
 	
 	public FlameBarrier() {}
 	
@@ -19,19 +23,24 @@ public class FlameBarrier extends SkillCard {
 		String owner = "A";
 		
 		SkillCard flameBarrier = new FlameBarrier(idx, name, cost, guard, rarity, owner);
-		flameBarrier.setDef("방어도를 " + flameBarrier.getGuard() + "얻습니다.\n이번 턴 공격을 받으면 " + getDamage() + "피해를 줍니다");
+		flameBarrier.setDef("방어도를 " + flameBarrier.getGuard() + "얻습니다.\n적에게 약화" + this.weak + "를 부여합니다.");
 		
 		return flameBarrier;
 	}
-
-	public int getDamage() {
-		return damage;
-	}
-
-	public void setDamage(int damage) {
-		this.damage = damage;
-	}
 	
-	
+	@Override
+	public boolean useCard(Character player, Enemy enemy) {
+		if(Battle.nowEnergy >= this.getCost()) {
+			Battle.nowEnergy -= this.getCost();
+			player.getStatus().addBlock(this.getGuard());
+			enemy.getStatus().addWeak(this.weak);
+			
+			return true;
+		} else {
+			System.out.println("에너지가 없어 사용할 수 없습니다.");
+			
+			return false;
+		}
+	}
 
 }

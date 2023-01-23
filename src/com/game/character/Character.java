@@ -88,7 +88,7 @@ public class Character {
 	
 	public void addCard(Card card) {
 		for(int i = 0; i < deck.length; i++) {
-			if(deck == null) {
+			if(deck[i] == null) {
 				deckCnt = i;
 				break;
 			}

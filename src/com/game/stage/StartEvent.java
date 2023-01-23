@@ -43,7 +43,7 @@ public class StartEvent implements GameStage{
                 break;
             } else if(input == 2 && random != 2){
                 //데미지 20%
-            	new Action().getDamage((int)(player.getStatus().getMaxHp() * 0.2), player.getStatus());
+            	player.getStatus().getDamage((int)(player.getStatus().getMaxHp() * 0.2));
                 //히히카드보상
             	Card reward = new CardReward().EpicCardReward(player);
             	if(reward != null) {
