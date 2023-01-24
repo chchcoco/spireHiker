@@ -6,7 +6,6 @@ import com.game.GameInformation;
 import com.game.card.Card;
 import com.game.card.CardReward;
 import com.game.character.Character;
-import com.game.data.Action;
 import com.game.enemy.Enemy;
 import com.game.enemy.TheGuardian;
 import com.game.play.Ending;
@@ -14,14 +13,12 @@ import com.game.play.Ending;
 public class Battle implements GameInformation {
 	
 	Scanner sc = new Scanner(System.in);
-	Action action = new Action();
 	private Character player;
-	Enemy enemy;
+	private Enemy enemy;
 	
 	private int[] cardCnt;							// draw()에서 플레이어가 같은 카드를 뽑지 않게 하기위한 변수
 	private int cnt; 								//cardCnt의 cnt
 	private Card[] hand = new Card[10];				//전투시 덱에서 뽑은 카드. '패'라고 함.
-	private Card temp; 								//사용한 카드를 정렬하기 위해 쓴 임시 변수공간
 	private int handCnt = 0;						//패의 수를 저장하는 변수
 	
 	private int maxEnergy;
@@ -36,10 +33,11 @@ public class Battle implements GameInformation {
 	}
 	
 	
-	public void fight(Character player, Enemy enemy) {
+	public void fight() {
 		System.out.println(enemy.getName() + "이 나타났습니다!");
 		int turnCnt = 1;
 		while(true) {
+			System.out.println(turnCnt+ "턴입니다.");
 			nowEnergy = maxEnergy;									// 에너지를 최대에너지로 조정
 			readyToBattle(player);									// 턴 시작시 이전 전투의 정보 초기화
 			
@@ -102,7 +100,7 @@ public class Battle implements GameInformation {
 		
 			player.getStatus().turnEnd();
 			turnCnt ++;
-			System.out.println(turnCnt+ "턴입니다.");
+			System.out.println();
 		}
 	}
 	
@@ -117,12 +115,14 @@ public class Battle implements GameInformation {
 		Card result;
 		while(true) {
 			boolean doReroll = false;
-			int random = (int)(Math.random() * 15);
+			int random = (int)(Math.random() * player.getDeckCnt());
 			for(int i = 0; i <= cnt; i++) {
-				if(random == cardCnt[i]) {
+				if(random == cardCnt[i] || player.getDeck()[random] == null) {
 					doReroll = true;
-					random = (int)(Math.random() * 15);
 					break;
+				}
+				if(i == cnt) {
+					cardCnt[i] = random;
 				}
 			}
 			

@@ -48,5 +48,6 @@ public class Louse extends Enemy{
 			this.setDamage((int)(Math.random() * 3 + 5));
 			this.setActionDef("적이 피해를 " + super.getDamage() + " 만큼 줍니다.");
 		}
+		System.out.println(this.getActionDef());
 	}
 }

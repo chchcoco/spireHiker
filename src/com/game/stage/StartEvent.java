@@ -5,7 +5,6 @@ import java.util.Scanner;
 import com.game.card.Card;
 import com.game.card.CardReward;
 import com.game.character.Character;
-import com.game.data.Action;
 
 public class StartEvent implements GameStage{
     
@@ -45,7 +44,7 @@ public class StartEvent implements GameStage{
                 //데미지 20%
             	player.getStatus().getDamage((int)(player.getStatus().getMaxHp() * 0.2));
                 //히히카드보상
-            	Card reward = new CardReward().EpicCardReward(player);
+            	Card reward = new CardReward().epicCardReward(player);
             	if(reward != null) {
             		player.addCard(reward);
             	}

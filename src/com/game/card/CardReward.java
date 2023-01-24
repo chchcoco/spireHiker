@@ -39,6 +39,10 @@ public class CardReward {
 
 		while (true) {
 			for (int i = 0; i < rewards.length; i++) {
+				if(rewards[i] == null) {
+					rewards[i] = new Strike();
+					rewards[i] = randomCard(player);
+				}
 				System.out.println(i + ". " + rewards[i].printText());
 			}
 			System.out.println("9) 보상을 포기합니다.");
@@ -56,12 +60,12 @@ public class CardReward {
 		}
 	}
 
-	public Card EpicCardReward(Character player) {
+	public Card epicCardReward(Character player) {
 		System.out.println("!!!!희귀카드 보상!!!!");
 		Card[][] rewards = player.getCardList();
 		while (true) {
 			for (int i = 0; i < rewards[2].length; i++) {
-				System.out.println(rewards[2][i].printText());
+				System.out.println(i + ". " + rewards[2][i].printText());
 			}
 			System.out.println("9) 보상을 포기합니다.");
 			System.out.print("카드보상을 선택하여 주세요 : ");

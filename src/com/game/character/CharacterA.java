@@ -17,10 +17,10 @@ public class CharacterA extends Character {
 	
 	@Override
 	public void startingDeck() {
-		for(int i = 1; i <= 3; i++) {
+		for(int i = 1; i <= 4; i++) {
 			this.addCard(new Strike().getCard());
 		}
-		for(int i = 1; i <= 3; i++) {
+		for(int i = 1; i <= 4; i++) {
 			this.addCard(new Defence().getCard());
 		}
 		this.addCard(new Bash().getCard());

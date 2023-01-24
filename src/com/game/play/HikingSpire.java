@@ -38,7 +38,7 @@ public class HikingSpire {
         	System.out.println("적이 나타났습니다!");
             Enemy enemy = ((int)(Math.random()*2)==0)? new JawWorm() : new Louse();
         	Battle battle = new Battle(player, enemy);
-        	battle.fight(player, enemy);
+        	battle.fight();
         	player = battle.getPlayer();
         } else if(floor == 10){					 //휴식
         	System.out.println("휴식합니다. 체력이 30% 회복합니다.");
@@ -48,7 +48,7 @@ public class HikingSpire {
         	System.out.println("마지막 보스만이 당신을 기다립니다.");
         	Enemy enemy = new TheGuardian();
         	Battle battle = new Battle(player, enemy);
-        	battle.fight(player, enemy);
+        	battle.fight();
         	return;
         } else{
             int random = (int)(Math.random() * 100) + 1;
@@ -56,8 +56,9 @@ public class HikingSpire {
                 //일반 전투
             	System.out.println("적이 나타났습니다!");
             	int randomEnemy = (int)(Math.random() * enemyArr.length);
-            	Battle battle = new Battle(player, enemyArr[randomEnemy]);
-            	battle.fight(player, enemyArr[randomEnemy]);
+            	Enemy enemy = returnEnemy(enemyArr[randomEnemy]);
+            	Battle battle = new Battle(player, enemy);
+            	battle.fight();
             	player = battle.getPlayer();
             } else if(random > 55 && random <= 85){
                 GameStage[] event = {new CardCopyEvent(), new CardExchangeEvent(), new HolyWater()};
@@ -71,10 +72,30 @@ public class HikingSpire {
             	System.out.println("강한 적이 나타났습니다! 주의하세요!");
                 Enemy elite = new GremlinNob();
                 Battle battle = new Battle(player, elite);
-                battle.fight(player, elite);
+                battle.fight();
                 player = battle.getPlayer();
             }
         }
+    }
+    
+    public Enemy returnEnemy(Enemy enemy) {
+    	Enemy result;
+    	if("광신자".equals(enemy.getName())){
+    		result = new Cultist();
+    	} else if("턱벌레".equals(enemy.getName())) {
+    		result = new JawWorm();
+    	} else if("공벌레".equals(enemy.getName())) {
+    		result = new Louse();
+    	} else if("노예 상인".equals(enemy.getName())) {
+    		result = new Slaver();
+    	} else if("슬라임".equals(enemy.getName())) {
+    		result = new Slime();
+    	} else {
+    		result = new Cultist();
+    		System.out.println("까마귀 군주께서 나를 불렀다.");
+    	}
+    	
+    	return result;
     }
     
 }

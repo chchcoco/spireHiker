@@ -31,5 +31,6 @@ public class Slime extends Enemy{
 			this.setDamage(8);
 			this.setActionDef("적이 피해를 " + this.getDamage() + " 만큼 줍니다.");
 		}
+		System.out.println(this.getActionDef());
 	}
 }

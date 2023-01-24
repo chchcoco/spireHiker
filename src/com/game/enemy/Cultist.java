@@ -31,5 +31,6 @@ public class Cultist extends Enemy {
 			this.getStatus().addStrength(3);
 			this.setActionDef("적이 " + (this.getDamage() + this.getStatus().getStrength()) + "의 피해로 공격합니다.");
 		}
+		System.out.println(this.getActionDef());
 	}
 }

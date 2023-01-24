@@ -11,7 +11,7 @@ public class ChooseCharacter implements GameInformation {
 	Scanner sc = new Scanner(System.in);
 	Character[] character;
 
-	public Character choose() {
+	public void choose() {
 		System.out.println("==============Hiking Spire==================");
 		
 		while (true) {
@@ -25,7 +25,6 @@ public class ChooseCharacter implements GameInformation {
 			if (input > 0 && input <= GameInformation.CHARACTER_COUNT) {
 				Character player = character[input - 1];
 				player.setCardList(new CardListOfA().characterChoose(player));
-				player.startingDeck();
 				
 				HikingSpire gameStart = new HikingSpire();
 

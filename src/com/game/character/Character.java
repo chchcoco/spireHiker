@@ -96,7 +96,7 @@ public class Character {
 		deck[deckCnt] = card;
 	}
 
-	public void characterEfferct() {}
+	
 	
 	
 	

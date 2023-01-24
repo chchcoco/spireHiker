@@ -38,5 +38,6 @@ public class Slaver extends Enemy {
 			this.setDamage(7);
 			this.setActionDef("적이 " + this.getDamage() + "의 피해로 공격하면서 해로운 효과를 줍니다.");
 		}
+		System.out.println(this.getActionDef());
 	}
 }

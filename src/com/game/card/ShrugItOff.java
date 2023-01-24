@@ -30,7 +30,7 @@ public class ShrugItOff extends SkillCard {
 	public boolean useCard(Character player, Enemy enemy) {
 		if(Battle.nowEnergy >= this.getCost()) {
 			Battle.nowEnergy -= this.getCost();
-			player.getStatus().addBlock(this.getGuard());
+			player.getStatus().addBlock(this.getGuard() + player.getStatus().getDexterity());
 			player.getStatus().addDexterity(((int)(Math.random()*2))== 0 ? 1 : 0);
 			
 			return true;

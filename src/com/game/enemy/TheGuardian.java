@@ -12,7 +12,7 @@ public class TheGuardian extends Enemy {
 	private boolean isAttackMod = true;
 	
 	public TheGuardian() {
-		super("수호자", 200, "boss");
+		super("수호자", 240, "boss");
 	}
 	
 	
@@ -77,7 +77,8 @@ public class TheGuardian extends Enemy {
 			this.setDamage(36);
 			this.setActionDef("적이 " + (this.getDamage() + this.getStatus().getStrength()) + "의 피해로 공격합니다.");
 		} else if (actionCnt == 5) {
-			System.out.println("수비모드 변경. 방어도 20 즉시 생성");
+			this.setActionDef("수비모드 변경, 방어도 20 즉시 획득");
+			this.getStatus().addBlock(20);
 		} else if(actionCnt == 6) {
 			this.getStatus().addBlock(3);
 			this.setDamage(9);
@@ -87,6 +88,7 @@ public class TheGuardian extends Enemy {
 			this.setDamage(8);
 			this.setActionDef(this.getName() + "가 " + this.getDamage() + " * 2 의 피해를 주는 공격을 시도합니다.");	
 		} //else 는 없다.
+		System.out.println(this.getActionDef());
 	}
 	
 	public void modeChange() {
@@ -98,6 +100,7 @@ public class TheGuardian extends Enemy {
 		
 		if(!isAttackMod && actionCnt == 7) {
 			isAttackMod = true;
+			shiftMod += 10;
 		}
 	}
 

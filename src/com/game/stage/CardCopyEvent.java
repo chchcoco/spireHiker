@@ -14,6 +14,8 @@ public class CardCopyEvent implements GameStage {
 		System.out.println("신비로운 재단이다. 카드를 1장 골라 놓으면 그 카드가 2장이 된다.");
 		System.out.println("어떤 카드를 고를까?");
 		for(int i = 0; i < deck.length; i++) {
+			if(deck[i] == null)
+				break;
 			System.out.println((i+1) + ".) " + deck[i].printText());
 		} System.out.println("0.) 그냥 지나친다.");
 		

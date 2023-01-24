@@ -51,5 +51,6 @@ public class JawWorm extends Enemy{
 			this.setDamage(7);
 			this.setActionDef("적이 " + this.getDamage() + "의 피해로 공격하면서 방어합니다.");
 		}
+		System.out.println(this.getActionDef());
 	}
 }

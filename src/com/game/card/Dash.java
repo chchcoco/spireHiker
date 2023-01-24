@@ -45,7 +45,7 @@ public class Dash extends AttackCard {
 			Battle.nowEnergy -= this.getCost();
 			int damage =(int) ((this.getDamage() + player.getStatus().getStrength())
 					* (player.getStatus().isWeak()? 0.75 : 1));
-			player.getStatus().addBlock(this.guard);
+			player.getStatus().addBlock(this.guard + player.getStatus().getDexterity());
 			enemy.getStatus().getDamage(damage);			
 			
 			return true;

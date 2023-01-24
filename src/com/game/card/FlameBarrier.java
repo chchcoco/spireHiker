@@ -32,7 +32,7 @@ public class FlameBarrier extends SkillCard {
 	public boolean useCard(Character player, Enemy enemy) {
 		if(Battle.nowEnergy >= this.getCost()) {
 			Battle.nowEnergy -= this.getCost();
-			player.getStatus().addBlock(this.getGuard());
+			player.getStatus().addBlock(this.getGuard() + player.getStatus().getDexterity());
 			enemy.getStatus().addWeak(this.weak);
 			
 			return true;

@@ -93,9 +93,5 @@ public class AttackCard implements Card {
 		this.owner = owner;
 	}
 
-	public int giveDamage(Status i) {
-		return this.damage;
-	}
-
 	
 }
