@@ -12,7 +12,12 @@ public class CardListOfA {
 			return null;
 		}
 	}
-
+	
+	/* 카드들을 rarity별로 구분하여 Card[][]에 저장하여 반환하는 메소드
+	 * index = 0 : normal
+	 * index = 1 : rare
+	 * index = 2 : epic
+	 * */
 	public Card[][] getCardListA() {
 		Card[][] cardList = new Card[3][];
 		cardList[0] = new Card[8];

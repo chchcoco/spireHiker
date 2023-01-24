@@ -11,8 +11,11 @@ public class ChooseCharacter implements GameInformation {
 	Scanner sc = new Scanner(System.in);
 	Character[] character;
 
+	/* main()에서 실행하는 메소드
+	 * 캐릭터를 고르고 고른 캐릭터를 매개변수로 hiking()를 실행시킨다.
+	 * */
 	public void choose() {
-		System.out.println("==============Hiking Spire==================");
+		System.out.println("===============Hiking Spire==================");
 		
 		while (true) {
 			character = new CharacterList().getCharacterList();

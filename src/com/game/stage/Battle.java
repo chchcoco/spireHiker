@@ -17,14 +17,14 @@ public class Battle implements GameInformation {
 	private Enemy enemy;
 	
 	private int[] cardCnt;							// draw()에서 플레이어가 같은 카드를 뽑지 않게 하기위한 변수
-	private int cnt; 								//cardCnt의 cnt
-	private Card[] hand = new Card[10];				//전투시 덱에서 뽑은 카드. '패'라고 함.
-	private int handCnt = 0;						//패의 수를 저장하는 변수
+	private int cnt; 								// cardCnt의 cnt
+	private Card[] hand = new Card[10];				// 전투시 덱에서 뽑은 카드. '패'라고 함.
+	private int handCnt = 0;						// 패의 수를 저장하는 변수
 	
-	private int maxEnergy;
-	public static int nowEnergy;
-	private boolean isUse;
-	private boolean battleEnd;
+	private int maxEnergy;							// 매 턴 얻게되는 최대 에너지
+	public static int nowEnergy;					// 현재 에너지. 카드를 사용하면 카드의 Cost만큼 감소한다.
+	private boolean isUse;							// 카드의 사용여부를 저장하는 메소드
+	private boolean battleEnd;						// 전투가 끝남을 판별하는 메소드
 	
 	public Battle(Character player, Enemy enemy) {
 		this.setPlayer(player);
@@ -32,7 +32,13 @@ public class Battle implements GameInformation {
 		this.maxEnergy = player.getMaxEnergy();
 	}
 	
-	
+	/* 전투 실행 메소드
+	 * 적의 행동을 먼저 출력하고,
+	 * player가 카드를 뽑고 사용한다.
+	 * player가 턴을 종료할 경우, enemy가 예고한 행동을 수행한다.
+	 * player의 체력이 0이 된 경우, badEnd()를 실행하며,
+	 * enemy의 체력이 0이 된 경우, battle을 종료하고 battleEnd()를 출력한다.
+	 * */
 	public void fight() {
 		System.out.println(enemy.getName() + "이 나타났습니다!");
 		int turnCnt = 1;
@@ -49,7 +55,7 @@ public class Battle implements GameInformation {
 			int input = 0;
 			while(input != -1) {
 				showBattleInformation(player, enemy);
-				enemy.printPattern(turnCnt);							// 전투 시작시 적이 할 행동 출력
+				enemy.printPattern(turnCnt);						// 전투 시작시 적이 할 행동 출력
 				for(int i = 0; i < handCnt; i++) {
 					if(hand[i] != null) {
 						System.out.println(i + ") " + hand[i].printText());
@@ -104,13 +110,21 @@ public class Battle implements GameInformation {
 		}
 	}
 	
-	/*전투시작 및 턴 시작시 덱에서 draw한 카드를 중복되지 않게 하는 것*/
+	/** 턴 시작시 필요한 카운터들을 초기화하는 메소드
+	 * 	cardCnt : 덱에서 draw한 카드를 중복되지 않게 하기위해, 이미 뽑은 deck의 인덱스를 저장하는 int[];
+	 *  cnt : cardCnt의 cnt
+	 *  handCnt : 손패의 카드 수를 세는 카운터
+	 * */
 	public void readyToBattle(Character player) {
-		cardCnt = new int[player.getDeckCnt()];
+		cardCnt = new int[player.getDeckCnt()]; 						
 		cnt = 0;
 		handCnt = 0;
 	}
 	
+	/* 카드를 뽑는 메소드
+	 * deck을 가져와 deck의 카드를 랜덤으로 1장 반환하며, 반환된 카드의 정보를 cardCnt에 저장한다.
+	 * 만약 반환하려는 카드가 이미 cardCnt에 존재하는 경우, 다시 카드를 뽑는다.
+	 * */
 	public Card draw(Character player) {
 		Card result;
 		while(true) {
@@ -137,6 +151,7 @@ public class Battle implements GameInformation {
 		return result;
 	}
 
+	/* 현재 전투에 참여중인 두 객체의 정보를 출력하는 메소드 */
 	public void showBattleInformation(Character player, Enemy enemy) {
 		System.out.println("플레이어 정보");
 		player.getStatus().printInformation();
@@ -145,7 +160,9 @@ public class Battle implements GameInformation {
 		enemy.getStatus().printInformation();
 	}
 	
-	
+	/* enemy의 체력을 0으로 만들어 battle()에서 승리시 수행되는 메소드
+	 * 쓰러뜨린 enemy의 type에 따라 수행되는 결과가 다름.
+	 * */
 	public void battleEnd(Enemy enemy) {
 		System.out.println("몬스터를 처치했습니다!");
 		if("normal".equals(enemy.getType())) {

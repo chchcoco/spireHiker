@@ -2,6 +2,11 @@ package com.game.play;
 
 import com.game.character.Character;
 
+/* class : Ending
+ * comment
+ * : 엔딩을 출력하는 메소드
+ * 결과 출력과 함께, 지금까지 얻은 카드들을 출력한다.
+ * */
 public class Ending {
 	public void goodEnd(Character player) {
 		System.out.println("승리!");

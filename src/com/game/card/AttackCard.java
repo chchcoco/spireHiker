@@ -27,11 +27,17 @@ public class AttackCard implements Card {
 		this.owner = owner;
 	}
 
+	/* 카드의 정보를 출력하는 메소드
+	 * 사용시 소모 에너지, 이름, 카드 효과를 String으로 반환
+	 * */
 	@Override
 	public String printText() {
 		return "Cost : " + cost + ", " + name + " : " + def;
 	}
 	
+	/* 카드를 사용했을 때, 쓰인 효과를 실행, 구현한 메소드
+	 * 카드의 사용 여부를 위해 boolean타입을 반환한다.
+	 * */
 	@Override
 	public boolean useCard(Character player, Enemy enemy) {
 		if(Battle.nowEnergy >= this.getCost()) {
@@ -41,6 +47,7 @@ public class AttackCard implements Card {
 		}
 	}
 
+	/*getter(), setter()*/
 	public int getIdx() {
 		return idx;
 	}

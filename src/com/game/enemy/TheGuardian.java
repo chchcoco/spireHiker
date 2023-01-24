@@ -4,9 +4,7 @@ import com.game.character.Character;
 
 public class TheGuardian extends Enemy {
 	
-	private int pattern = (int)(Math.random() * 4 + 1);
 	private int shiftMod = 30;
-	private int sumDamage = 0;
 	private int actionCnt = 1;
 	private int deadline;
 	private boolean isAttackMod = true;
@@ -64,7 +62,7 @@ public class TheGuardian extends Enemy {
 	public void printPattern(int turnCnt) {
 		if(actionCnt == 1) {
 			deadline = this.getStatus().getHp() - shiftMod;
-			System.out.println("모드 변경까지 누적 데미지는 " + shiftMod + "입니다.");
+			System.out.println("공격 모드 수행. 모드 변경까지 누적 데미지는 " + shiftMod + "입니다.");
 			System.out.println("피해를 " + shiftMod + "만큼 입으면 하려던 행동을 중단하고 즉시 방어모드로 돌입합니다.");
 			this.setActionDef("방어도를 얻습니다");
 		} else if(actionCnt == 2) {
@@ -91,6 +89,7 @@ public class TheGuardian extends Enemy {
 		System.out.println(this.getActionDef());
 	}
 	
+	/* 고유 패턴을 구현을 위해 추가로 구현된 메소드 */
 	public void modeChange() {
 		if(isAttackMod && this.getStatus().getHp() <= deadline) {
 			actionCnt = 5;

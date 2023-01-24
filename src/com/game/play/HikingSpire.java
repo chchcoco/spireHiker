@@ -78,6 +78,9 @@ public class HikingSpire {
         }
     }
     
+    /* 적을 반환하는 메소드
+     * enemyArr에 저장된 객체와 동일한 Enemy타입의 객체를 새로 생성하여 반환한다.
+     * */
     public Enemy returnEnemy(Enemy enemy) {
     	Enemy result;
     	if("광신자".equals(enemy.getName())){

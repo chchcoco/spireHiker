@@ -5,14 +5,14 @@ import com.game.data.Status;
 
 public class Character {
 	
-	private String name;
+	private String name;						// 캐릭터 명
 	private int maxHp;
-	private String def;
-	private Card[] deck = new Card[50];
-	private Card[][] cardList = new Card[3][];
-	private int deckCnt = 0;
-	private Status status;
-	private int maxEnergy = 3;
+	private String def;							// 캐릭터에 대한 설명
+	private Card[] deck = new Card[50];			// 전투 시 매 턴 5장씩 뽑는 카드 풀.
+	private Card[][] cardList = new Card[3][];	// 캐릭터가 가진 전체 카드 리스트. 레어도별로 열로 구분.
+	private int deckCnt = 0;					// 현재 덱이 몇 장 있는지 세는 카운터 
+	private Status status;						// 체력 등 정보를 저장하는 Status필드
+	private int maxEnergy = 3;					// 전투 시작시 매 턴 얻게되는 에너지량
 	
 	public Character(String name, int maxHp, String def) {
 		super();
@@ -22,10 +22,11 @@ public class Character {
 		this.status = new Status(this.maxHp);
 	}
 
-	public void characterEffect() {}
+	public void characterEffect() {}			// 캐릭터 고유 효과 구현 메소드
 	
-	public void startingDeck() {}
+	public void startingDeck() {}				// 캐릭터 고유 시작 덱 구현 메소드
 
+	/*getter, setter*/
 	public String getName() {
 		return name;
 	}
@@ -86,6 +87,11 @@ public class Character {
 		this.maxEnergy = maxEnergy;
 	}
 	
+	/* deck에 카드를 추가하는 메소드
+	 * 매개변수로 입력받을 카드를 받아서
+	 * 첫번째 null이 오는 deck[index]에 해당 카드를 저장한다.
+	 * deckCnt도 해당 index로 바꾼다.
+	 * */
 	public void addCard(Card card) {
 		for(int i = 0; i < deck.length; i++) {
 			if(deck[i] == null) {
