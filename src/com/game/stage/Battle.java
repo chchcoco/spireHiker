@@ -167,12 +167,15 @@ public class Battle implements GameInformation {
 		System.out.println("몬스터를 처치했습니다!");
 		if("normal".equals(enemy.getType())) {
 			System.out.println("카드보상을 획득합니다!");
-			new CardReward().getReward(getPlayer());
+			Card reward = new CardReward().getReward(getPlayer());
+			player.addCard(reward);
 		}else if("elite".equals(enemy.getType())) {
 			System.out.println("카드보상을 획득합니다!");
-			new CardReward().getReward(getPlayer());
+			Card reward = new CardReward().getReward(getPlayer());
+			player.addCard(reward);
 			System.out.println("두번째 카드보상!");
-			new CardReward().getReward(getPlayer());
+			reward = new CardReward().getReward(getPlayer());
+			player.addCard(reward);
 		} else if("boss".equals(enemy.getType())) {
 			System.out.println("보스를 쓰러뜨리고 첨탑을 정복했습니다!");
 			new Ending().goodEnd(player);
