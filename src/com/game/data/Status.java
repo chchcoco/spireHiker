@@ -229,6 +229,19 @@ public class Status {
 			hp = maxHp;
 		}
 	}
+	
+	/* 전투가 끝났을 때, 전투중 부여되었던 각종 버프 및 디버프를 초기화하는 메소드
+	 * hp와 maxHp, isLive를 제외한 모든 필드를 초기화값으로 변경한다.
+	 * */
+	public void effectReset() {
+		this.block = 0;
+		this.strength = 0;
+		this.dexterity = 0;
+		this.cntVulnerable = 0;
+		this.isVulnerable = false;
+		this.cntWeak = 0;
+		this.isWeak = false;
+	}
 
 	
 }

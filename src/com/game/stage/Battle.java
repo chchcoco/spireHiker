@@ -62,7 +62,7 @@ public class Battle implements GameInformation {
 					}
 				}
 				System.out.println();
-				System.out.println("현재 에너지 : " + nowEnergy);
+				System.out.println("\n현재 에너지 : " + nowEnergy);
 				System.out.println("~ -1) 차례를 넘깁니다.");
 				System.out.print("사용할 카드의 번호를 입력하세요 : ");
 				input = sc.nextInt();
@@ -164,7 +164,8 @@ public class Battle implements GameInformation {
 	 * 쓰러뜨린 enemy의 type에 따라 수행되는 결과가 다름.
 	 * */
 	public void battleEnd(Enemy enemy) {
-		System.out.println("몬스터를 처치했습니다!");
+		System.out.println("\n몬스터를 처치했습니다!");
+		player.getStatus().effectReset();			// 전투 중 생겼던 상태이상 및 버프 초기화
 		if("normal".equals(enemy.getType())) {
 			System.out.println("카드보상을 획득합니다!");
 			Card reward = new CardReward().getReward(getPlayer());
