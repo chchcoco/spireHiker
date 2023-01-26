@@ -1,5 +1,6 @@
 package com.game.card;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import com.game.character.Character;
 
@@ -7,11 +8,10 @@ public class CardReward {
 
 	Scanner sc = new Scanner(System.in);
 
-	/** 
-	 * 카드의 희귀도에 따라 다른 확률을 적용하여
-	 * 난수로 값을 생성해 랜덤 카드를 하나 리턴하는 메소드; 
+	/**
+	 * 카드의 희귀도에 따라 다른 확률을 적용하여 난수로 값을 생성해 랜덤 카드를 하나 리턴하는 메소드;
 	 * 
-	 * */
+	 */
 	public Card randomCard(Character player) {
 		Card reward;
 		Card[][] pool = player.getCardList();
@@ -39,7 +39,7 @@ public class CardReward {
 
 		while (true) {
 			for (int i = 0; i < rewards.length; i++) {
-				if(rewards[i] == null) {
+				if (rewards[i] == null) {
 					rewards[i] = new Strike();
 					rewards[i] = randomCard(player);
 				}
@@ -47,14 +47,18 @@ public class CardReward {
 			}
 			System.out.println("9) 보상을 포기합니다.");
 			System.out.print("카드보상을 선택하여 주세요 : ");
-			int input = sc.nextInt();
+			try {
+				int input = sc.nextInt();
 
-			if (input == 9) {
-				return null;
-			} else if (input >= 0 && input < rewards.length) {
-				return rewards[input];
-			} else {
-				System.out.println("다시 선택해주세요.");
+				if (input == 9) {
+					return null;
+				} else if (input >= 0 && input < rewards.length) {
+					return rewards[input];
+				} else {
+					System.out.println("다시 선택해주세요.");
+				}
+			} catch (InputMismatchException e) {
+				System.out.println("허용되지 않은 입력입니다. 재입력 바랍니다.");
 			}
 
 		}
@@ -69,14 +73,18 @@ public class CardReward {
 			}
 			System.out.println("9) 보상을 포기합니다.");
 			System.out.print("카드보상을 선택하여 주세요 : ");
-			int input = sc.nextInt();
+			try {
+				int input = sc.nextInt();
 
-			if (input == 9) {
-				return null;
-			} else if (input >= 0 && input < rewards.length) {
-				return rewards[2][input];
-			} else {
-				System.out.println("다시 선택해주세요.");
+				if (input == 9) {
+					return null;
+				} else if (input >= 0 && input < rewards.length) {
+					return rewards[2][input];
+				} else {
+					System.out.println("다시 선택해주세요.");
+				}
+			} catch (InputMismatchException e) {
+				System.out.println("허용되지 않은 입력입니다. 재입력 바랍니다.");
 			}
 		}
 	}

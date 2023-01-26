@@ -1,5 +1,6 @@
 package com.game.play;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import com.game.GameInformation;
@@ -24,6 +25,7 @@ public class ChooseCharacter implements GameInformation {
 				System.out.println(character[i].getDef());
 			}
 			System.out.print("캐릭터를 선택해주세요 : ");
+			try {
 			int input = sc.nextInt();
 			if (input > 0 && input <= GameInformation.CHARACTER_COUNT) {
 				Character player = character[input - 1];
@@ -34,6 +36,9 @@ public class ChooseCharacter implements GameInformation {
 				gameStart.hiking(player);
 			} else {
 				System.out.println("없는 번호입니다. 골라주세요.");
+			}
+			} catch(InputMismatchException e) {
+				System.out.println("허용되지 않은 입력입니다. 캐릭터의 번호를 재입력 하세요.");
 			}
 		}
 	}
