@@ -1,6 +1,5 @@
 package com.game.card;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 import com.game.character.Character;
 
@@ -47,9 +46,11 @@ public class CardReward {
 			}
 			System.out.println("9) 보상을 포기합니다.");
 			System.out.print("카드보상을 선택하여 주세요 : ");
-			try {
-				int input = sc.nextInt();
 
+			String inputStr = sc.nextLine();
+			int input;
+			if (inputStr.charAt(0) >= '0' && inputStr.charAt(0) <= '9') {
+				input = (int) inputStr.charAt(0) - 48;
 				if (input == 9) {
 					return null;
 				} else if (input >= 0 && input < rewards.length) {
@@ -57,7 +58,7 @@ public class CardReward {
 				} else {
 					System.out.println("다시 선택해주세요.");
 				}
-			} catch (InputMismatchException e) {
+			} else {
 				System.out.println("허용되지 않은 입력입니다. 재입력 바랍니다.");
 			}
 
@@ -73,9 +74,11 @@ public class CardReward {
 			}
 			System.out.println("9) 보상을 포기합니다.");
 			System.out.print("카드보상을 선택하여 주세요 : ");
-			try {
-				int input = sc.nextInt();
 
+			String inputStr = sc.nextLine();
+			int input;
+			if (inputStr.charAt(0) >= '0' && inputStr.charAt(0) <= '9') {
+				input = (int) inputStr.charAt(0) - 48;
 				if (input == 9) {
 					return null;
 				} else if (input >= 0 && input < rewards.length) {
@@ -83,7 +86,7 @@ public class CardReward {
 				} else {
 					System.out.println("다시 선택해주세요.");
 				}
-			} catch (InputMismatchException e) {
+			} else {
 				System.out.println("허용되지 않은 입력입니다. 재입력 바랍니다.");
 			}
 		}

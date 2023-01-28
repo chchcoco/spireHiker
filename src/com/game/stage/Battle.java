@@ -1,6 +1,5 @@
 package com.game.stage;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import com.game.GameInformation;
@@ -64,8 +63,13 @@ public class Battle implements GameInformation {
 				System.out.println("\n현재 에너지 : " + nowEnergy);
 				System.out.println("~ -1) 차례를 넘깁니다.");
 				System.out.print("사용할 카드의 번호를 입력하세요 : ");
-				try {
-					input = sc.nextInt();
+				String inputStr = sc.nextLine();
+				if ((inputStr.charAt(0) >= '0' && inputStr.charAt(0) <= '9') || inputStr.charAt(0) == '-') {
+					if(inputStr.charAt(0) == '-') {
+						input = -1;
+					} else {
+						input = (int) inputStr.charAt(0) - 48;
+					}
 					if (input < 0) { // 음수 입력으로 차례를 종료한 경우
 						System.out.println("차례를 넘깁니다.");
 						break;
@@ -88,7 +92,7 @@ public class Battle implements GameInformation {
 							System.out.println("이미 사용한 카드 입니다.");
 						}
 					}
-				} catch (InputMismatchException e) {
+				} else {
 					System.out.println("허용되지 않은 입력입니다. 다시 입력하세요.");
 				}
 				System.out.println();
