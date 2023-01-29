@@ -20,8 +20,8 @@ public class Impervious extends SkillCard {
 		String rarity = "epic";
 		String owner = "A";
 		
-		SkillCard impervious = new Impervious(idx, name, cost, guard, rarity, rarity);
-		impervious.setDef("방어도를 " + this.getGuard() + "얻습니다.");
+		SkillCard impervious = new Impervious(idx, name, cost, guard, rarity, owner);
+		impervious.setDef("방어도를 " + impervious.getGuard() + "만큼 얻습니다.");
 		
 		return impervious;
 	}

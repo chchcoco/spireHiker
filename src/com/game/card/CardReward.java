@@ -30,7 +30,7 @@ public class CardReward {
 	}
 
 	public Card getReward(Character player) {
-		System.out.println("!! 카드보상 !!");
+		System.out.println("\n!! 카드보상 !!");
 		Card[] rewards = new Card[3];
 		for (int i = 0; i < rewards.length; i++) {
 			rewards[i] = randomCard(player);
@@ -66,7 +66,7 @@ public class CardReward {
 	}
 
 	public Card epicCardReward(Character player) {
-		System.out.println("!!!!희귀카드 보상!!!!");
+		System.out.println("\n!!!!희귀카드 보상!!!!");
 		Card[][] rewards = player.getCardList();
 		while (true) {
 			for (int i = 0; i < rewards[2].length; i++) {

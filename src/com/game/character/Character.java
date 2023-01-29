@@ -100,6 +100,7 @@ public class Character {
 			}
 		}
 		deck[deckCnt] = card;
+		deckCnt++;
 	}
 
 	

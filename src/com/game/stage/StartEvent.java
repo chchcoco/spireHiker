@@ -28,9 +28,7 @@ public class StartEvent implements GameStage {
 				System.out.println(i + ".)" + bonus[i]);
 			}
 			System.out.print("시작 보상을 선택하시오 : ");
-			System.out.println((int)'0' + "   " + (int)'9');
 			String inputStr = sc.nextLine();
-			System.out.println((int)inputStr.charAt(0));
 			int input;
 			if (inputStr.charAt(0) >= '0' && inputStr.charAt(0) <= '9') {
 				input = (int) inputStr.charAt(0) - 48;

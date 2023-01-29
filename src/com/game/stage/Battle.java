@@ -41,7 +41,7 @@ public class Battle implements GameInformation {
 		System.out.println(enemy.getName() + "이 나타났습니다!");
 		int turnCnt = 1;
 		while (true) {
-			System.out.println(turnCnt + "턴입니다.");
+			System.out.println("\n" + turnCnt + "턴입니다.");
 			nowEnergy = maxEnergy; // 에너지를 최대에너지로 조정
 			readyToBattle(player); // 턴 시작시 이전 전투의 정보 초기화
 
@@ -52,6 +52,7 @@ public class Battle implements GameInformation {
 
 			int input = 0;
 			while (input != -1) {
+				System.out.println();
 				showBattleInformation(player, enemy);
 				enemy.printPattern(turnCnt); // 전투 시작시 적이 할 행동 출력
 				for (int i = 0; i < handCnt; i++) {
@@ -59,7 +60,6 @@ public class Battle implements GameInformation {
 						System.out.println(i + ") " + hand[i].printText());
 					}
 				}
-				System.out.println();
 				System.out.println("\n현재 에너지 : " + nowEnergy);
 				System.out.println("~ -1) 차례를 넘깁니다.");
 				System.out.print("사용할 카드의 번호를 입력하세요 : ");
@@ -95,7 +95,6 @@ public class Battle implements GameInformation {
 				} else {
 					System.out.println("허용되지 않은 입력입니다. 다시 입력하세요.");
 				}
-				System.out.println();
 			}
 			if (battleEnd) {
 				battleEnd(enemy);
@@ -144,7 +143,6 @@ public class Battle implements GameInformation {
 					cardCnt[i] = random;
 				}
 			}
-
 			if (doReroll) {
 				continue;
 			}

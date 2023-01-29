@@ -1,23 +1,36 @@
 package com.game.play;
 
+import java.util.Scanner;
+
 import com.game.character.Character;
-import com.game.enemy.*;
+import com.game.enemy.Cultist;
+import com.game.enemy.Enemy;
+import com.game.enemy.GremlinNob;
+import com.game.enemy.JawWorm;
+import com.game.enemy.Louse;
+import com.game.enemy.Slaver;
+import com.game.enemy.Slime;
+import com.game.enemy.TheGuardian;
 import com.game.stage.Battle;
-import com.game.stage.*;
+import com.game.stage.CardCopyEvent;
+import com.game.stage.CardExchangeEvent;
+import com.game.stage.GameStage;
+import com.game.stage.HolyWater;
 import com.game.stage.StartEvent;
 
 public class HikingSpire {
 
     private int floor = 1;
     private Enemy[] enemyArr = {new Cultist(), new JawWorm(), new Louse(), new Slaver(), new Slime()};
-
+    Scanner sc = new Scanner(System.in);
+    
     /* 메인 등반 메소드
      * 캐릭터를 골라 선택하면 바로 이 메소드가 실행된다.
      * 층에 따라 각기 다른 이벤트를 출력하는 randomStage()메소드를 실행시킨다.
      * */
     public void hiking(Character player) {
         while(true){
-        	System.out.println();
+        	System.out.println("\n=======================================");
             System.out.println(floor + "층입니다.");
             randomStage(floor, player);
             floor++;
@@ -68,6 +81,9 @@ public class HikingSpire {
                 // 휴식
             	System.out.println("휴식합니다. 체력이 30% 회복합니다.");
                 player.getStatus().heal((int)(player.getStatus().getMaxHp() * 0.3));
+                System.out.println("다음 층으로 넘어갑니다. 아무 키나 입력하세요");
+        		String next = sc.nextLine();
+        		next = null;
             } else {
             	System.out.println("강한 적이 나타났습니다! 주의하세요!");
                 Enemy elite = new GremlinNob();

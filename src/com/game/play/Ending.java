@@ -18,8 +18,7 @@ public class Ending {
 			System.out.println(player.getDeck()[i].printText());
 		}
 		System.out.println("수고하셨습니다");
-		return;
-	}
+		System.exit(0);}
 	
 	public void badEnd(Character player) {
 		System.out.println("패배...");
@@ -30,6 +29,6 @@ public class Ending {
 			}
 			System.out.println(player.getDeck()[i].printText());
 		}
-		return;
+		System.exit(0);
 	}
 }
