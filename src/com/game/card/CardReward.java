@@ -81,7 +81,7 @@ public class CardReward {
 				input = (int) inputStr.charAt(0) - 48;
 				if (input == 9) {
 					return null;
-				} else if (input >= 0 && input < rewards.length) {
+				} else if (input >= 0 && input < rewards[2].length) {
 					return rewards[2][input];
 				} else {
 					System.out.println("다시 선택해주세요.");
