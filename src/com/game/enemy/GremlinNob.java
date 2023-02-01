@@ -36,13 +36,13 @@ public class GremlinNob extends Enemy{
 	public void printPattern(int turnCnt) {
 		if(turnCnt == 1) {
 			this.setDamage(11);
-			this.setActionDef("적이 자신에게 이로운 버프를 부여합니다.(매턴 힘 2 획득)");
+			this.setActionDef(this.getName() + "이(가) 자신에게 이로운 버프를 부여합니다.(매턴 힘 2 획득)");
 		} else if (turnCnt == 2 || turnCnt % pattern == 0){
 			this.setDamage(4);
-			this.setActionDef("적이 " + (this.getDamage() + this.getStatus().getStrength()) + "의 피해로 공격하며 해로운 효과를 부여합니다.");
+			this.setActionDef(this.getName() + "이(가) " + (this.getDamage() + this.getStatus().getStrength()) + "의 피해로 공격하며 해로운 효과를 부여합니다.");
 		} else {
 			this.setDamage(14);
-			this.setActionDef("적이 " + (this.getDamage() + this.getStatus().getStrength()) + "의 피해로 공격합니다.");
+			this.setActionDef(this.getName() + "이(가) " + (this.getDamage() + this.getStatus().getStrength()) + "의 피해로 공격합니다.");
 		}
 		System.out.println(this.getActionDef());
 	}

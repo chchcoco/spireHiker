@@ -25,11 +25,11 @@ public class Cultist extends Enemy {
 	@Override
 	public void printPattern(int turnCnt) {
 		if(turnCnt == 1) {
-			this.setActionDef("적이 매 턴마다 힘 3를 얻는 버프를 자신에게 부여합니다");
+			this.setActionDef(this.getName() + "이(가) 매 턴마다 힘 3를 얻는 버프를 자신에게 부여합니다");
 		}  else {
 			this.setDamage(3);
 			this.getStatus().addStrength(3);
-			this.setActionDef("적이 " + (this.getDamage() + this.getStatus().getStrength()) + "의 피해로 공격합니다.");
+			this.setActionDef(this.getName() + "이(가) " + (this.getDamage() + this.getStatus().getStrength()) + "의 피해로 공격합니다.");
 		}
 		System.out.println(this.getActionDef());
 	}

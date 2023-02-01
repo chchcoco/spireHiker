@@ -92,11 +92,11 @@ public class TheGuardian extends Enemy {
 		} else if(actionCnt == 6) {
 			this.getStatus().addBlock(3);
 			this.setDamage(9);
-			this.setActionDef(this.getName() + "가 " + this.getDamage() + "의 피해를 주는 공격을 시도합니다.");
+			this.setActionDef(this.getName() + "이(가) " + this.getDamage() + "의 피해를 주는 공격을 시도합니다.");
 		} else if(actionCnt == 7) {
 			this.getStatus().addBlock(3);
 			this.setDamage(8);
-			this.setActionDef(this.getName() + "가 " + this.getDamage() + " * 2 의 피해를 주는 공격을 시도합니다. \n무슨 일이 벌어질 것 같습니다");	
+			this.setActionDef(this.getName() + "이(가) " + this.getDamage() + " * 2 의 피해를 주는 공격을 시도합니다. \n무슨 일이 벌어질 것 같습니다");	
 		} //else 는 없다.
 		System.out.println(this.getActionDef());
 	}

@@ -33,10 +33,10 @@ public class Slaver extends Enemy {
 	public void printPattern(int turnCnt) {
 		if (turnCnt % pattern == 0){
 			this.setDamage(12);
-			this.setActionDef("적이 " + this.getDamage() + "의 피해로 공격합니다.");
+			this.setActionDef(this.getName()+"이(가) " + this.getDamage() + "의 피해로 공격합니다.");
 		} else {
 			this.setDamage(7);
-			this.setActionDef("적이 " + this.getDamage() + "의 피해로 공격하면서 해로운 효과를 줍니다.");
+			this.setActionDef(this.getName()+"이(가) " + this.getDamage() + "의 피해로 공격하면서 해로운 효과를 줍니다.");
 		}
 		System.out.println(this.getActionDef());
 	}

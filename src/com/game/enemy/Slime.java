@@ -26,10 +26,10 @@ public class Slime extends Enemy{
 	@Override
 	public void printPattern(int turnCnt) {
 		if(turnCnt % pattern == 0) {
-			this.setActionDef("적이 디버프를 부여합니다.");
+			this.setActionDef(this.getName()+"이(가) 디버프를 부여합니다.");
 		} else {
 			this.setDamage(8);
-			this.setActionDef("적이 피해를 " + this.getDamage() + " 만큼 줍니다.");
+			this.setActionDef(this.getName()+"이(가) 피해를 " + this.getDamage() + " 만큼 줍니다.");
 		}
 		System.out.println(this.getActionDef());
 	}

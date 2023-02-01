@@ -41,15 +41,15 @@ public class JawWorm extends Enemy{
 	public void printPattern(int turnCnt) {
 		if(turnCnt == 1) {
 			this.setDamage(11);
-			this.setActionDef("적이 " + this.getDamage() + "의 피해로 공격합니다.");
+			this.setActionDef(this.getName()+"이(가) " + this.getDamage() + "의 피해로 공격합니다.");
 		} else if (turnCnt % pattern == 0){
 			this.setDamage(11);
-			this.setActionDef("적이 " + this.getDamage() + "의 피해로 공격합니다.");
+			this.setActionDef(this.getName()+"이(가) " + this.getDamage() + "의 피해로 공격합니다.");
 		} else if (turnCnt % pattern == 1) {
 			this.setActionDef("적이 방어와 자신에게 이로운 행동을 합니다");
 		} else {
 			this.setDamage(7);
-			this.setActionDef("적이 " + this.getDamage() + "의 피해로 공격하면서 방어합니다.");
+			this.setActionDef(this.getName()+"이(가) " + this.getDamage() + "의 피해로 공격하면서 방어합니다.");
 		}
 		System.out.println(this.getActionDef());
 	}
