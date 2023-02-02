@@ -1,5 +1,8 @@
 package com.game.character;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.game.card.Card;
 import com.game.data.Status;
 
@@ -9,6 +12,8 @@ public class Character {
 	private int maxHp;
 	private String def;							// 캐릭터에 대한 설명
 	private Card[] deck = new Card[50];			// 전투 시 매 턴 5장씩 뽑는 카드 풀.
+	private List<Card> deck1 = new ArrayList<>();
+	
 	private Card[][] cardList = new Card[3][];	// 캐릭터가 가진 전체 카드 리스트. 레어도별로 열로 구분.
 	private int deckCnt = 0;					// 현재 덱이 몇 장 있는지 세는 카운터 
 	private Status status;						// 체력 등 정보를 저장하는 Status필드
@@ -42,6 +47,10 @@ public class Character {
 	public Card[] getDeck() {
 		return deck;
 	}
+	
+	public List<Card> getDeck1() {
+		return deck1;
+	}
 
 	public Card[][] getCardList(){
 		return cardList;
@@ -49,6 +58,7 @@ public class Character {
 	
 	public int getDeckCnt() {
 		return deckCnt;
+//		return deck1.size();
 	}
 
 	public Status getStatus(){
@@ -73,6 +83,10 @@ public class Character {
 
 	public void setDeck(Card[] deck) {
 		this.deck = deck;
+	}
+	
+	public void setDeck1(List<Card> deck) {
+		this.deck1 = deck;
 	}
 
 	public void setCardList(Card[][] cardList){
@@ -103,6 +117,9 @@ public class Character {
 		deckCnt++;
 	}
 
+	public void addCard1(Card card) {
+		deck1.add(card);
+	}
 	
 	
 	
