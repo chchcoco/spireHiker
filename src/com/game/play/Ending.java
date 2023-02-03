@@ -12,10 +12,12 @@ public class Ending {
 		System.out.println("승리!");
 		System.out.println("얻은 카드");
 		for(int i = 0; i < player.getDeckCnt(); i++) {
-			if(player.getDeck()[i] == null) {
+//			if(player.getDeck()[i] == null) {
+			if(player.getDeck().get(i) == null) {
 				break;
 			}
-			System.out.println(player.getDeck()[i].printText());
+//			System.out.println(player.getDeck()[i].printText());
+			System.out.println(player.getDeck().get(i).printText());
 		}
 		System.out.println("수고하셨습니다");
 		System.exit(0);}
@@ -24,10 +26,12 @@ public class Ending {
 		System.out.println("패배...");
 		System.out.println("얻은 카드");
 		for(int i = 0; i < player.getDeckCnt(); i++) {
-			if(player.getDeck()[i] == null) {
+//			if(player.getDeck()[i] == null) {
+			if(player.getDeck().get(i) == null) {
 				break;
 			}
-			System.out.println(player.getDeck()[i].printText());
+//			System.out.println(player.getDeck()[i].printText());
+			System.out.println(player.getDeck().get(i).printText());
 		}
 		System.exit(0);
 	}

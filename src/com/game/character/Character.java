@@ -11,8 +11,8 @@ public class Character {
 	private String name;						// 캐릭터 명
 	private int maxHp;
 	private String def;							// 캐릭터에 대한 설명
-	private Card[] deck = new Card[50];			// 전투 시 매 턴 5장씩 뽑는 카드 풀.
-	private List<Card> deck1 = new ArrayList<>();
+//	private Card[] deck = new Card[50];			
+	private List<Card> deck = new ArrayList<>();// 전투 시 매 턴 5장씩 뽑는 카드 풀.
 	
 	private Card[][] cardList = new Card[3][];	// 캐릭터가 가진 전체 카드 리스트. 레어도별로 열로 구분.
 	private int deckCnt = 0;					// 현재 덱이 몇 장 있는지 세는 카운터 
@@ -44,12 +44,12 @@ public class Character {
 		return def;
 	}
 
-	public Card[] getDeck() {
-		return deck;
-	}
+//	public Card[] getDeck() {
+//		return deck;
+//	}
 	
-	public List<Card> getDeck1() {
-		return deck1;
+	public List<Card> getDeck() {
+		return deck;
 	}
 
 	public Card[][] getCardList(){
@@ -81,12 +81,12 @@ public class Character {
 		this.def = def;
 	}
 
-	public void setDeck(Card[] deck) {
+//	public void setDeck(Card[] deck) {
+//		this.deck = deck;
+//	}
+
+	public void setDeck(List<Card> deck) {
 		this.deck = deck;
-	}
-	
-	public void setDeck1(List<Card> deck) {
-		this.deck1 = deck;
 	}
 
 	public void setCardList(Card[][] cardList){
@@ -107,20 +107,21 @@ public class Character {
 	 * deckCnt도 해당 index로 바꾼다.
 	 * */
 	public void addCard(Card card) {
-		for(int i = 0; i < deck.length; i++) {
-			if(deck[i] == null) {
-				deckCnt = i;
-				break;
-			}
-		}
-		deck[deckCnt] = card;
-		deckCnt++;
+		deck.add(card);
 	}
-
-	public void addCard1(Card card) {
-		deck1.add(card);
-	}
+		
+//	public void addCard(Card card) {
+//		for(int i = 0; i < deck.length; i++) {
+//			if(deck[i] == null) {
+//				deckCnt = i;
+//				break;
+//			}
+//		}
+//		deck[deckCnt] = card;
+//		deckCnt++;
+//	}
 	
+
 	
 	
 	

@@ -1,5 +1,7 @@
 package com.game.stage;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 import com.game.GameInformation;
@@ -18,8 +20,10 @@ public class Battle implements GameInformation {
 
 	private int[] cardCnt; // draw()에서 플레이어가 같은 카드를 뽑지 않게 하기위한 변수
 	private int cnt; // cardCnt의 cnt
-	private Card[] hand = new Card[10]; // 전투시 덱에서 뽑은 카드. '패'라고 함.
+//	private Card[] hand = new Card[10]; 
 	private int handCnt = 0; // 패의 수를 저장하는 변수
+	
+	private List<Card> hand = new LinkedList<>();// 전투시 덱에서 뽑은 카드. '패'라고 함.
 
 	private int maxEnergy; // 매 턴 얻게되는 최대 에너지
 	public static int nowEnergy; // 현재 에너지. 카드를 사용하면 카드의 Cost만큼 감소한다.
@@ -46,7 +50,8 @@ public class Battle implements GameInformation {
 			readyToBattle(player); // 턴 시작시 이전 전투의 정보 초기화
 
 			for (int i = 0; i < GameInformation.DRAW_CARDS; i++) { // 카드 뽑기
-				hand[i] = draw(player);
+//				hand[i] = draw(player);
+				hand.add(draw(player));
 				handCnt++;
 			}
 
@@ -55,11 +60,17 @@ public class Battle implements GameInformation {
 				System.out.println();
 				showBattleInformation(player, enemy);
 				enemy.printPattern(turnCnt); // 전투 시작시 적이 할 행동 출력
-				for (int i = 0; i < handCnt; i++) {
-					if (hand[i] != null) {
-						System.out.println(i + ") " + hand[i].printText());
-					}
+//				for (int i = 0; i < handCnt; i++) {
+//					if (hand[i] != null) {
+//						System.out.println(i + ") " + hand[i].printText());
+//					}
+//				}
+				for(int i = 0; i < hand.size(); i++) {
+					if(hand.get(i) != null) {
+						System.out.println(i + ")" + hand.get(i).printText());
+					} 
 				}
+				
 				System.out.println("\n현재 에너지 : " + nowEnergy);
 				System.out.println("~ -1) 차례를 넘깁니다.");
 				System.out.print("사용할 카드의 번호를 입력하세요 : ");
@@ -73,13 +84,18 @@ public class Battle implements GameInformation {
 					if (input < 0) { // 음수 입력으로 차례를 종료한 경우
 						System.out.println("차례를 넘깁니다.");
 						break;
-					} else if (input > handCnt) { // 핸드에서 출력된 번호보다 큰 값을 입력한 경우
+//					} else if (input > handCnt) { // 핸드에서 출력된 번호보다 큰 값을 입력한 경우
+					} else if (input > hand.size()) { // 핸드에서 출력된 번호보다 큰 값을 입력한 경우
+					
 						System.out.println("없는 카드 입니다. 다시 선택하세요.");
 					} else { // 일반적인 경우(핸드에 있는 카드를 정상적으로 선택한 경우)
-						if (hand[input] != null) {
-							isUse = hand[input].useCard(player, enemy);
+//						if (hand[input] != null) {
+						if (hand.get(input) != null) {
+//							isUse = hand[input].useCard(player, enemy);
+							isUse = hand.get(input).useCard(player, enemy);
 							if (isUse) {
-								hand[input] = null;
+//								hand[input] = null;
+								hand.remove(input);
 							}
 							if (!enemy.getStatus().isLive()) {
 								battleEnd = true;
@@ -131,11 +147,16 @@ public class Battle implements GameInformation {
 	 */
 	public Card draw(Character player) {
 		Card result;
+		boolean doReroll;
+		int random;
+		
 		while (true) {
-			boolean doReroll = false;
-			int random = (int) (Math.random() * player.getDeckCnt());
+			doReroll = false;
+			random = (int) (Math.random() * player.getDeckCnt());
 			for (int i = 0; i <= cnt; i++) {
-				if (random == cardCnt[i] || player.getDeck()[random] == null) {
+//				if (random == cardCnt[i] || player.getDeck()[random] == null) {
+				if (random == cardCnt[i] || player.getDeck().get(random)== null) {
+					
 					doReroll = true;
 					break;
 				}
@@ -147,9 +168,12 @@ public class Battle implements GameInformation {
 				continue;
 			}
 			cnt++;
-			result = player.getDeck()[random];
+//			result = player.getDeck()[random];
+			result = player.getDeck().get(random);
 			break;
 		}
+		
+		
 
 		return result;
 	}
