@@ -67,7 +67,11 @@ public class Battle implements GameInformation {
 //				}
 				for(int i = 0; i < hand.size(); i++) {
 					if(hand.get(i) != null) {
-						System.out.println(i + ")" + hand.get(i).printText());
+						if(i == 9) {
+							System.out.println("0)" + hand.get(i).printText());
+						} else {						//평소 출력;
+							System.out.println((i + 1) + ")" + hand.get(i).printText());
+						}
 					} 
 				}
 				
@@ -78,14 +82,17 @@ public class Battle implements GameInformation {
 				if ((inputStr.charAt(0) >= '0' && inputStr.charAt(0) <= '9') || inputStr.charAt(0) == '-') {
 					if(inputStr.charAt(0) == '-') {
 						input = -1;
+					} else if(inputStr.charAt(0) == '0') {
+						input = 9;
 					} else {
-						input = (int) inputStr.charAt(0) - 48;
+						input = (int) inputStr.charAt(0) - '0' - 1;
 					}
+					
 					if (input < 0) { // 음수 입력으로 차례를 종료한 경우
 						System.out.println("차례를 넘깁니다.");
 						break;
 //					} else if (input > handCnt) { // 핸드에서 출력된 번호보다 큰 값을 입력한 경우
-					} else if (input > hand.size()) { // 핸드에서 출력된 번호보다 큰 값을 입력한 경우
+					} else if (input >= hand.size()) { // 핸드에서 출력된 번호보다 큰 값을 입력한 경우
 					
 						System.out.println("없는 카드 입니다. 다시 선택하세요.");
 					} else { // 일반적인 경우(핸드에 있는 카드를 정상적으로 선택한 경우)
@@ -139,6 +146,7 @@ public class Battle implements GameInformation {
 		cardCnt = new int[player.getDeckCnt()];
 		cnt = 0;
 		handCnt = 0;
+		hand.clear();;
 	}
 
 	/*
