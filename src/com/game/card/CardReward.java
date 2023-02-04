@@ -1,5 +1,7 @@
 package com.game.card;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import com.game.character.Character;
 
@@ -31,20 +33,33 @@ public class CardReward {
 
 	public Card getReward(Character player) {
 		System.out.println("\n!! 카드보상 !!");
-		Card[] rewards = new Card[3];
-		for (int i = 0; i < rewards.length; i++) {
-			rewards[i] = randomCard(player);
-		}
-
-		while (true) {
-			for (int i = 0; i < rewards.length; i++) {
-				if (rewards[i] == null) {
-					rewards[i] = new Strike();
-					rewards[i] = randomCard(player);
+		int rewardsLength = 3;
+//		Card[] rewards = new Card[3];
+		List<Card> rewards = new ArrayList<>();
+		
+		for (int i = 0; i < rewardsLength; i++) {
+			boolean reroll = false;
+//			rewards[i] = randomCard(player);
+			rewards.add(randomCard(player));
+			for(int j = 0; j < rewards.size(); j++) {
+				if(rewards.get(i).printText() == rewards.get(j).printText()) {
+					reroll = true;
 				}
-				System.out.println(i + ". " + rewards[i].printText());
 			}
-			System.out.println("9) 보상을 포기합니다.");
+			if(reroll) {
+				i--;
+			}
+		}
+		
+		while (true) {
+			for (int i = 0; i < rewards.size(); i++) {
+				if (rewards.get(i) == null) {
+					rewards.set(i, new Strike());
+					rewards.set(i, randomCard(player));
+				}
+				System.out.println(i + ".) " + rewards.get(i).printText());
+			}
+			System.out.println("9.) 보상을 포기합니다.");
 			System.out.print("카드보상을 선택하여 주세요 : ");
 
 			String inputStr = sc.nextLine();
@@ -53,8 +68,8 @@ public class CardReward {
 				input = (int) inputStr.charAt(0) - 48;
 				if (input == 9) {
 					return null;
-				} else if (input >= 0 && input < rewards.length) {
-					return rewards[input];
+				} else if (input >= 0 && input < rewards.size()) {
+					return rewards.get(input);
 				} else {
 					System.out.println("다시 선택해주세요.");
 				}
@@ -70,9 +85,9 @@ public class CardReward {
 		Card[][] rewards = player.getCardList();
 		while (true) {
 			for (int i = 0; i < rewards[2].length; i++) {
-				System.out.println(i + ". " + rewards[2][i].printText());
+				System.out.println(i + ".) " + rewards[2][i].printText());
 			}
-			System.out.println("9) 보상을 포기합니다.");
+			System.out.println("9.) 보상을 포기합니다.");
 			System.out.print("카드보상을 선택하여 주세요 : ");
 
 			String inputStr = sc.nextLine();

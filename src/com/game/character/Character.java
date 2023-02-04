@@ -15,7 +15,7 @@ public class Character {
 	private List<Card> deck = new ArrayList<>();// 전투 시 매 턴 5장씩 뽑는 카드 풀.
 	
 	private Card[][] cardList = new Card[3][];	// 캐릭터가 가진 전체 카드 리스트. 레어도별로 열로 구분.
-	private int deckCnt = 0;					// 현재 덱이 몇 장 있는지 세는 카운터 
+//	private int deckCnt = 0;					// 현재 덱이 몇 장 있는지 세는 카운터 // Deck을 배열에서 ArrayList로 바꾸면서 쓸모 없어짐.
 	private Status status;						// 체력 등 정보를 저장하는 Status필드
 	private int maxEnergy = 3;					// 전투 시작시 매 턴 얻게되는 에너지량
 	
@@ -57,8 +57,8 @@ public class Character {
 	}
 	
 	public int getDeckCnt() {
-		return deckCnt;
-//		return deck1.size();
+//		return deckCnt;
+		return deck.size();
 	}
 
 	public Status getStatus(){
