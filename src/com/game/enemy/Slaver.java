@@ -4,7 +4,7 @@ import com.game.character.Character;
 
 public class Slaver extends Enemy {
 
-	private int pattern = (int)(Math.random() * 2 + 1);
+	private int pattern;
 	
 	public Slaver() {
 		super("노예 상인", (int)(Math.random() * 5) + 46, "normal");
@@ -31,6 +31,7 @@ public class Slaver extends Enemy {
 	
 	@Override
 	public void printPattern(int turnCnt) {
+		pattern = (int)(Math.random() * 2 + 1);
 		if (turnCnt % pattern == 0){
 			this.setDamage(12);
 			this.setActionDef(this.getName()+"이(가) " + this.getDamage() + "의 피해로 공격합니다.");

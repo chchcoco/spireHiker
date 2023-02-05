@@ -4,7 +4,7 @@ import com.game.character.Character;
 
 public class JawWorm extends Enemy{
 	
-	private int pattern = (int)(Math.random() * 3 + 1);
+	private int pattern;
 	
 	public JawWorm() {
 		super("턱벌레", (int)(Math.random() * 5) + 40, "normal");
@@ -14,12 +14,7 @@ public class JawWorm extends Enemy{
 	
 	@Override
 	public void actionPattern(Character player, int turnCnt) {
-		if(turnCnt == 1) {
-			int damage = (int)((this.getDamage() + this.getStatus().getStrength()) 
-					* (this.getStatus().isWeak() ? 0.75 : 1));
-			System.out.println(this.getName() + "의 " + damage + "피해의 공격!");
-			player.getStatus().getDamage(damage);
-		} else if (turnCnt % pattern == 0){
+		if (turnCnt == 1 || turnCnt % pattern == 0){
 			int damage = (int)((this.getDamage() + this.getStatus().getStrength()) 
 					* (this.getStatus().isWeak() ? 0.75 : 1));
 			System.out.println(this.getName() + "의 " + damage + "피해의 공격!");
@@ -39,10 +34,8 @@ public class JawWorm extends Enemy{
 	
 	@Override
 	public void printPattern(int turnCnt) {
-		if(turnCnt == 1) {
-			this.setDamage(11);
-			this.setActionDef(this.getName()+"이(가) " + this.getDamage() + "의 피해로 공격합니다.");
-		} else if (turnCnt % pattern == 0){
+		pattern = (int)(Math.random() * 3 + 1);
+		if (turnCnt == 1 || turnCnt % pattern == 0){
 			this.setDamage(11);
 			this.setActionDef(this.getName()+"이(가) " + this.getDamage() + "의 피해로 공격합니다.");
 		} else if (turnCnt % pattern == 1) {

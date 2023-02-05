@@ -4,7 +4,7 @@ import com.game.character.Character;
 
 public class GremlinNob extends Enemy{
 	
-	private int pattern = (int)(Math.random() * 4 + 1);
+	private int pattern;
 	
 	public GremlinNob() {
 		super("귀족 그렘린", (int)(Math.random() * 4) + 82, "elite");
@@ -34,6 +34,7 @@ public class GremlinNob extends Enemy{
 	
 	@Override
 	public void printPattern(int turnCnt) {
+		pattern = (int)(Math.random() * 4 + 1);
 		if(turnCnt == 1) {
 			this.setDamage(11);
 			this.setActionDef(this.getName() + "이(가) 자신에게 이로운 버프를 부여합니다.(매턴 힘 2 획득)");

@@ -4,7 +4,7 @@ import com.game.character.Character;
 
 public class Louse extends Enemy{
 	
-	private int pattern = (int)(Math.random() * 3 + 1);
+	private int pattern;
 	private int randomCnt;
 	
 	public Louse() {
@@ -35,6 +35,7 @@ public class Louse extends Enemy{
 	
 	@Override
 	public void printPattern(int turnCnt) {
+		pattern = (int)(Math.random() * 3 + 1);
 		if(turnCnt == 1) {
 			this.setActionDef(this.getName()+"은(는) 방어도를 10 얻습니다.");
 		} else if(turnCnt % pattern == 0) {
